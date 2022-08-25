@@ -1,14 +1,14 @@
 import './App.css';
 import Navbar from './components/Navbar';
-import About from './components/About';
+// import About from './components/About';
 import TextArea from './components/TextArea';
 import Alert from './components/Alert';
 import React, { useState } from 'react'
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-} from "react-router-dom";
+// import {
+//   BrowserRouter,
+//   Routes,
+//   Route,
+// } from "react-router-dom";
 
 
 
@@ -45,20 +45,21 @@ function App() {
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter> */}
       
         <Navbar title='Textutils' mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
-          <Routes>
+          {/* <Routes>
 
             <Route exact path="/About" element={<About/>}/>
-            <Route exact path="/" element={<TextArea showAlert={showAlert} heading="This is Text Area" mode={mode} alert={alert} />}/>
+            <Route exact path="/" element=/>
           
-          </Routes>
+          </Routes> */}
+          {<TextArea showAlert={showAlert} heading="This is Text Area" mode={mode} alert={alert} />}
         </div>
 
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
 
 
     </>
