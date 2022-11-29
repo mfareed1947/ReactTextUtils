@@ -1,14 +1,14 @@
 import './App.css';
 import Navbar from './components/Navbar';
-// import About from './components/About';
+import About from './components/About';
 import TextArea from './components/TextArea';
 import Alert from './components/Alert';
 import React, { useState } from 'react'
-// import {
-//   BrowserRouter,
-//   Routes,
-//   Route,
-// } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 
 
@@ -28,12 +28,27 @@ function App() {
     }, 2000);
   }
 
+  const removeClass = () => {
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-success')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-primary')
+  }
 
-  const toggleMode = () => {
+
+
+
+  const toggleMode = (cls) => {
+    removeClass();
+    console.log(cls)
+
+    document.body.classList.add('bg-' + cls)
 
     if (mode === "light") {
       setmode("dark")
-      document.body.style.backgroundColor = "grey";
+      document.body.style.backgroundColor = "#25053e";
       showAlert("Darkmode mode has been enabled", "success")
     }
     else {
@@ -45,21 +60,21 @@ function App() {
 
   return (
     <>
-      {/* <BrowserRouter> */}
-      
+      <BrowserRouter>
+
         <Navbar title='Textutils' mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
-          {/* <Routes>
+          <Routes>
 
-            <Route exact path="/About" element={<About/>}/>
-            <Route exact path="/" element=/>
-          
-          </Routes> */}
-          {<TextArea showAlert={showAlert} heading="This is Text Area" mode={mode} alert={alert} />}
+            <Route exact path="/About" element={<About mode={mode} />} />
+            <Route exact path="/" element={<TextArea showAlert={showAlert} heading="This is Text Area" mode={mode} alert={alert} />} />
+
+          </Routes>
+
         </div>
 
-      {/* </BrowserRouter> */}
+      </BrowserRouter>
 
 
     </>

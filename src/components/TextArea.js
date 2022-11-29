@@ -62,17 +62,17 @@ export default function TextArea(props) {
             <div className='container' style={{color:props.mode==='dark'?'white':'black'}} >
                 <h1> <i>{props.heading}</i> </h1>
                 <div className="">
-                    <textarea className="form-control" value={text} onChange={changeText} style={{ backgroundColor: props.mode === 'dark' ? 'grey' : "white", color: props.mode === 'dark' ? 'white' : "black" }} id="exampleFormControlTextarea1" rows="8"></textarea>
-                    <button className="btn btn-primary mx-2 my-3" onClick={handleUpCase}>convert to UpCase</button>
-                    <button className="btn btn-dark mx-2 my-3" onClick={handleLowerCase}>convert to lowercase</button>
-                    <button className="btn btn-danger mx-2 my-3" onClick={handleClear}>Clear</button>
-                    <button className="btn btn-warning mx-2 my-3" onClick={handleCap}>capitalize</button>
-                    <button className="btn btn-warning mx-2 my-3" onClick={handleCopy}>Copy Text</button>
-                    <button className="btn btn-info mx-2 my-3" onClick={ExSpacRemove}>Extra Space Remove</button>
+                    <textarea className="form-control" value={text} onChange={changeText} style={{ backgroundColor: props.mode === 'dark' ? '#380666' : "white", color: props.mode === 'dark' ? 'white' : "black" }} id="exampleFormControlTextarea1" rows="8"></textarea>
+                    <button disabled={text?.length===0} className="btn btn-primary mx-2 my-3" onClick={handleUpCase}>convert to UpCase</button>
+                    <button disabled={text?.length===0} className="btn btn-dark mx-2 my-3" onClick={handleLowerCase}>convert to lowercase</button>
+                    <button disabled={text?.length===0} className="btn btn-danger mx-2 my-3" onClick={handleClear}>Clear</button>
+                    <button disabled={text?.length===0} className="btn btn-warning mx-2 my-3" onClick={handleCap}>capitalize</button>
+                    <button disabled={text?.length===0} className="btn btn-warning mx-2 my-3" onClick={handleCopy}>Copy Text</button>
+                    <button disabled={text?.length===0} className="btn btn-info mx-2 my-3" onClick={ExSpacRemove}>Extra Space Remove</button>
                 </div>
                 <div className="container my-3">
                     <h2>your summary text</h2>
-                    <p>{text?.split(" ").length} <b>words</b> and {text?.length} <b>characters</b></p>
+                    <p>{text?.split(/\s+/).filter((ele)=>{return  ele.length!==0}).length} <b>words</b> and {text?.length} <b>characters</b></p>
                     <p>{0.008 * text?.split(" ").length} Minutes </p>
                     <h2>Preview</h2>
                     <p>{text?.length>0?text:'enter a text in box and preview the value'}</p>
